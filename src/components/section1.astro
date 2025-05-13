@@ -1,0 +1,375 @@
+---
+// Instead of importing from Clerk directly, we'll use a UI-only approach
+// that preserves the design until Clerk is properly integrated
+const isUserSignedIn = false; // This would come from your auth system
+---
+
+<!-- Mobile Menu Toggle Button - Only visible on small screens -->
+<div class="md:hidden fixed top-4 right-4 z-50 transition-all duration-300 js-menu-toggle-container">
+  <button 
+    class="p-2 rounded-md text-white transition-all duration-300 js-mobile-menu-toggle"
+    aria-label="Toggle menu"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 transition-all duration-300">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+  
+  <!-- Mobile Menu Dropdown - positioned relative to button -->
+  <div class="absolute top-10 right-0 bg-white rounded-3xl w-64 shadow-xl overflow-hidden z-50 js-mobile-menu hidden">
+    <div class="flex flex-col items-center p-6">
+      <nav class="flex flex-col items-center w-full">
+        <a href="#features" class="py-3 text-gray-800 font-medium transition-all duration-300 js-menu-link">Features</a>
+        <a href="#how-it-works" class="py-3 text-gray-800 font-medium transition-all duration-300 js-menu-link">How it Works</a>
+        <a href="#faq" class="py-3 text-gray-800 font-medium transition-all duration-300 js-menu-link">FAQ</a>
+      </nav>
+      
+      <div class="flex flex-col items-center w-full mt-4 space-y-3">
+        {!isUserSignedIn && (
+          <div class="w-full space-y-3">
+            <a href="/sign-up">
+              <button class="w-full rounded-full py-2 px-4 bg-[#F1E5F9] text-[#7A38F5] font-medium flex items-center justify-center transition-all duration-300 js-menu-btn">
+                <span class="mr-2">Sign Up</span> 
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </a>
+            
+            <a href="/sign-in">
+              <button class="w-full rounded-full py-2 px-4 border border-gray-200 text-gray-500 font-medium flex items-center justify-center transition-all duration-300 js-menu-btn">
+                <span>Log In</span>
+              </button>
+            </a>
+          </div>
+        )}
+        
+        {isUserSignedIn && (
+          <button 
+            class="js-dashboard-btn w-full rounded-full py-2 px-4 bg-[#F1E5F9] text-[#7A38F5] font-medium flex items-center justify-center transition-all duration-300">
+            <span class="mr-2">Go to Dashboard</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="flex relative flex-col px-4 sm:px-8 md:px-16"
+style="background-image: url('https://res.cloudinary.com/quantumcona/image/upload/v1746796730/header_dru29m.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <header class="flex z-0 flex-col self-center pt-10 pb-10 md:pb-20 text-sm w-full max-w-full md:max-w-[800px] transition-all duration-300 js-header">
+    <article class="flex flex-col justify-center items-center w-full">
+      <div class="flex relative flex-col items-center w-full text-center">
+        <h1 class="z-0 font-semibold text-base sm:text-md md:text-lg bg-clip-text text-white opacity-80 bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)]">
+          Paymorz Your best solution for making payments
+          with the lowest fees
+        </h1>
+        <p class="z-0 mt-3.5 text-2xl sm:text-3xl md:text-5xl font-bold mb-5 text-white leading-tight md:leading-10 bg-clip-text bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)]">
+          Fast, secure, and hassle-free
+          <br class="hidden sm:block" />
+          payments !
+        </p>
+        <p class="z-0 mt-3.5 text-sm sm:text-base leading-5 sm:leading-6 text-white opacity-80">
+          Easily pay Invoice payment
+          <br class="hidden sm:block" />
+          And freelancer services securely and seamlessly with Paymorz &#8482;
+        </p>
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/0b1feec35086e6a56369716c952cadadc62bbd8fad7e66a6c991552a5dce6d11?placeholderIfAbsent=true&apiKey=838345b5408f41af9319f4f5af9e5e4c" alt="" class="object-contain absolute left-2/4 z-0 w-8 sm:w-10 -translate-x-2/4 aspect-[0.98] bottom-[60px] h-[32px] sm:h-[41px] translate-y-[0%]" />
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6f01f0578b7c95e34bc4cdea9690fca465b8b78f230134f56db69831168eaebf?placeholderIfAbsent=true&apiKey=838345b5408f41af9319f4f5af9e5e4c" alt="" class="hidden md:block object-contain absolute z-0 h-7 aspect-[1.07] right-[120px] top-[42px] w-[30px]" />
+      </div>
+      
+      {!isUserSignedIn && (
+        <a href="/sign-in">
+          <button 
+            class="step1 flex overflow-hidden gap-2 justify-center items-center self-center py-4 sm:py-5 px-6 sm:px-9 mt-8 font-semibold shadow-xl bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)] rounded-[100px] w-full sm:w-auto transition-all duration-700 js-button opacity-0 translate-y-20" 
+            tabindex="0">
+            <span class="self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">Create an Account</span>
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/2dd2a006b859fbf8a484d44d474f81a90c606e949bfcd52051d612c06de43a4b?placeholderIfAbsent=true&apiKey=838345b5408f41af9319f4f5af9e5e4c" alt="" class="object-contain shrink-0 self-stretch my-auto aspect-square w-[18px]" />
+          </button>
+        </a>
+      )}
+      
+      {isUserSignedIn && (
+        <button 
+          class="step2 flex overflow-hidden gap-2 justify-center items-center self-center py-4 sm:py-5 px-6 sm:px-9 mt-8 font-semibold shadow-xl bg-[linear-gradient(108deg,#FFF_-0.37%,#F4F4F6_98.96%)] rounded-[100px] w-full sm:w-auto transition-all duration-700 js-button opacity-0 translate-y-20 js-dashboard-btn" 
+          tabindex="0">
+          <span class="self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)]">Goto Dashboard</span>
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/2dd2a006b859fbf8a484d44d474f81a90c606e949bfcd52051d612c06de43a4b?placeholderIfAbsent=true&apiKey=838345b5408f41af9319f4f5af9e5e4c" alt="" class="object-contain shrink-0 self-stretch my-auto aspect-square w-[18px]" />
+        </button>
+      )}
+    </article>
+  </header>
+
+  <div class="w-full h-[600px] relative overflow-hidden">
+    <!-- Background City Silhouette -->
+    <div class="js-city absolute top-[-15rem] bottom-0 w-full h-full z-0 transition-all duration-1000 ease-in-out translate-y-full opacity-0">
+      <img
+        src="https://res.cloudinary.com/quantumcona/image/upload/v1745906849/Group_896_lc4o8r.svg"
+        alt="City Silhouette Background"
+        class="w-full h-full object-cover object-top"
+      />
+    </div>
+  
+    <!-- Characters and Floating Coins -->
+    <div class="relative z-10 w-full h-full flex items-center justify-center">
+      <div class="relative w-[700px] h-[500px]">
+        <!-- Left Character (Woman) -->
+        <div class="js-left-person absolute left-1/2 top-1/2 transform -translate-y-1/2 transition-all duration-1000 ease-in-out -translate-x-[400%] opacity-0">
+          <img
+            src="https://res.cloudinary.com/quantumcona/image/upload/v1745904120/Character_1_krcudn.png"
+            alt="Woman using phone"
+            class="h-[30rem] w-auto object-contain"
+          />
+        </div>
+  
+        <!-- Right Character (Man) -->
+        <div class="js-right-person absolute left-1/2 top-1/2 transform -translate-y-1/2 transition-all duration-1000 ease-in-out translate-x-[300%] opacity-0">
+          <img
+            src="https://res.cloudinary.com/quantumcona/image/upload/v1745904118/Character_2_szx7aj.png"
+            alt="Man using phone"
+            class="h-[30rem] w-auto object-contain"
+          />
+        </div>
+  
+        <!-- Floating Coins -->
+        <div class="js-coins absolute -top-20 left-1/2 transform -translate-x-1/2 z-10 transition-all duration-1000 ease-in-out opacity-0 blur-md scale-75">
+          <img
+            src="https://res.cloudinary.com/quantumcona/image/upload/v1745904117/Group_897_ipopiq.png"
+            alt="Floating coins"
+            class="h-56 w-auto object-contain"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // DOM elements
+    const menuToggleContainer = document.querySelector('.js-menu-toggle-container');
+    const menuToggle = document.querySelector('.js-mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.js-mobile-menu');
+    const header = document.querySelector('.js-header');
+    const menuLinks = document.querySelectorAll('.js-menu-link');
+    const menuButtons = document.querySelectorAll('.js-menu-btn');
+    const buttons = document.querySelectorAll('.js-button');
+    const cityElement = document.querySelector('.js-city');
+    const leftPersonElement = document.querySelector('.js-left-person');
+    const rightPersonElement = document.querySelector('.js-right-person');
+    const coinsElement = document.querySelector('.js-coins');
+    const dashboardButtons = document.querySelectorAll('.js-dashboard-btn');
+    
+    // State
+    let mobileMenuOpen = false;
+    let isMenuShrinked = false;
+    let lastScrollY = 0;
+    let scrollDirection = "down";
+    let animationsTriggered = {
+      button: false,
+      city: false,
+      leftPerson: false,
+      rightPerson: false,
+      coins: false
+    };
+
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+      mobileMenuOpen = !mobileMenuOpen;
+      if (mobileMenuOpen) {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close mobile menu
+    function closeMobileMenu() {
+      mobileMenuOpen = false;
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Update header and menu style based on scroll
+    function updateHeaderStyle(scrollY) {
+      if (scrollY > 50) {
+        isMenuShrinked = true;
+        header.classList.replace('pt-10', 'pt-6');
+        header.classList.replace('pb-10', 'pb-8');
+        header.classList.replace('md:pb-20', 'md:pb-12');
+        
+        if (menuToggleContainer) {
+          menuToggleContainer.classList.replace('top-4', 'top-2');
+          
+          if (menuToggle) {
+            menuToggle.classList.replace('p-2', 'p-1.5');
+            const svg = menuToggle.querySelector('svg');
+            if (svg) {
+              svg.classList.replace('w-6', 'w-5');
+              svg.classList.replace('h-6', 'h-5');
+            }
+          }
+          
+          menuLinks.forEach(link => {
+            link.classList.replace('py-3', 'py-2');
+          });
+          
+          menuButtons.forEach(btn => {
+            btn.classList.replace('py-2', 'py-1.5');
+            btn.classList.replace('px-4', 'px-3');
+          });
+        }
+      } else {
+        isMenuShrinked = false;
+        header.classList.replace('pt-6', 'pt-10');
+        header.classList.replace('pb-8', 'pb-10');
+        header.classList.replace('md:pb-12', 'md:pb-20');
+        
+        if (menuToggleContainer) {
+          menuToggleContainer.classList.replace('top-2', 'top-4');
+          
+          if (menuToggle) {
+            menuToggle.classList.replace('p-1.5', 'p-2');
+            const svg = menuToggle.querySelector('svg');
+            if (svg) {
+              svg.classList.replace('w-5', 'w-6');
+              svg.classList.replace('h-5', 'h-6');
+            }
+          }
+          
+          menuLinks.forEach(link => {
+            link.classList.replace('py-2', 'py-3');
+          });
+          
+          menuButtons.forEach(btn => {
+            btn.classList.replace('py-1.5', 'py-2');
+            btn.classList.replace('px-3', 'px-4');
+          });
+        }
+      }
+    }
+    
+    // Handle animation based on scroll
+    function updateAnimations(scrollY, direction) {
+      if (direction === "down") {
+        if (scrollY > 100 && !animationsTriggered.city && cityElement) {
+          animationsTriggered.city = true;
+          cityElement.classList.remove('translate-y-full', 'opacity-0');
+          cityElement.classList.add('opacity-20', 'transform-none');
+        }
+        if (scrollY > 150 && !animationsTriggered.leftPerson && leftPersonElement) {
+          animationsTriggered.leftPerson = true;
+          leftPersonElement.classList.remove('-translate-x-[400%]', 'opacity-0');
+          leftPersonElement.classList.add('-translate-x-[100%]', 'opacity-100');
+        }
+        if (scrollY > 150 && !animationsTriggered.rightPerson && rightPersonElement) {
+          animationsTriggered.rightPerson = true;
+          rightPersonElement.classList.remove('translate-x-[300%]', 'opacity-0');
+          rightPersonElement.classList.add('translate-x-0', 'opacity-100');
+        }
+        if (scrollY > 200 && !animationsTriggered.coins && coinsElement) {
+          animationsTriggered.coins = true;
+          coinsElement.classList.remove('opacity-0', 'blur-md', 'scale-75');
+          coinsElement.classList.add('opacity-100', 'blur-0');
+        }
+      } else {
+        if (scrollY < 200 && animationsTriggered.coins && coinsElement) {
+          animationsTriggered.coins = false;
+          coinsElement.classList.remove('opacity-100', 'blur-0');
+          coinsElement.classList.add('opacity-0', 'blur-md', 'scale-75');
+        }
+        if (scrollY < 150 && animationsTriggered.leftPerson && leftPersonElement) {
+          animationsTriggered.leftPerson = false;
+          leftPersonElement.classList.remove('-translate-x-[100%]', 'opacity-100');
+          leftPersonElement.classList.add('-translate-x-[400%]', 'opacity-0');
+        }
+        if (scrollY < 150 && animationsTriggered.rightPerson && rightPersonElement) {
+          animationsTriggered.rightPerson = false;
+          rightPersonElement.classList.remove('translate-x-0', 'opacity-100');
+          rightPersonElement.classList.add('translate-x-[300%]', 'opacity-0');
+        }
+        if (scrollY < 100 && animationsTriggered.city && cityElement) {
+          animationsTriggered.city = false;
+          cityElement.classList.remove('opacity-20', 'transform-none');
+          cityElement.classList.add('translate-y-full', 'opacity-0');
+        }
+      }
+    }
+
+    // Handle scroll event
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      
+      // Determine scroll direction
+      scrollDirection = currentScrollY > lastScrollY ? "down" : "up";
+      
+      // Update UI based on scroll position
+      updateHeaderStyle(currentScrollY);
+      updateAnimations(currentScrollY, scrollDirection);
+      
+      lastScrollY = currentScrollY;
+    }
+
+    // Initialize
+    function init() {
+      // Reset scroll position
+      window.scrollTo(0, 0);
+      
+      // Setup event listeners
+      menuToggle?.addEventListener('click', toggleMobileMenu);
+      menuLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+      window.addEventListener('scroll', handleScroll);
+      dashboardButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          closeMobileMenu();
+          window.location.href = '/dashboard';
+        });
+      });
+      
+      // Animate button on page load
+      setTimeout(() => {
+        animationsTriggered.button = true;
+        buttons.forEach(button => {
+          if (button) {
+            button.classList.remove('opacity-0', 'translate-y-20');
+            button.classList.add('opacity-100', 'transform-none', 'animate-bounce-subtle');
+          }
+        });
+      }, 300);
+    }
+
+    // Run initialization
+    init();
+
+    // Return a cleanup function - this won't be used in this context, but it's good practice
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      menuToggle?.removeEventListener('click', toggleMobileMenu);
+      menuLinks.forEach(link => link.removeEventListener('click', closeMobileMenu));
+      dashboardButtons.forEach(btn => {
+        btn.removeEventListener('click', () => {});
+      });
+      document.body.style.overflow = '';
+    };
+  });
+</script>
+
+<style>
+  @keyframes bounce-subtle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out 1;
+  }
+</style>

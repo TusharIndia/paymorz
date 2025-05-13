@@ -1,0 +1,127 @@
+---
+import Footer from '../components/footer.astro';
+import Welcome from '../components/section1.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Add necessary imports for authentication if using a library like auth.js
+// For example: import { isLoggedIn, logout } from '../lib/auth';
+
+// Define any reactive variables here
+const isNavbarSticky = false; // This should be set via client script
+const isPastSection1 = false; // This should be set via client script
+const message = ""; // Or set your message here
+---
+
+<Layout>
+	<div style="background-color: #F0F1F2; overflow-x: hidden;">
+        <div class="flex relative flex-col min-h-[1000px]" role="banner">
+          <!-- Top section with background image -->
+          <div class="relative">
+            <img
+            />
+            <div className="flex relative flex-col justify-center w-full min-w-[320px] max-md:max-w-full">
+             {message && <div
+                className="flex overflow-hidden gap-2 xs:gap-2.5 justify-center items-center px-2 xs:px-4 sm:px-8 md:px-16 lg:px-96 py-2 xs:py-3 w-full text-[10px] xs:text-xs tracking-wider leading-relaxed text-center text-white bg-gray-800"
+                role="alert"
+                aria-live="polite"
+              >
+                <div className="self-stretch my-auto opacity-80 max-md:max-w-full">
+                  {message}
+                </div>
+              </div>}
+              
+              {/* Sticky Navigation Bar with dynamic styling */}
+              <nav
+                className={`
+                  flex flex-wrap gap-3 xs:gap-5 justify-between items-center px-3 xs:px-4 sm:px-8 md:px-16 py-3 xs:py-4 md:py-5 w-full text-xs sm:text-sm font-semibold
+                  transition-all duration-300 ease-in-out
+                  ${isNavbarSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-sm' : ''}
+                `}
+                style={{
+                  background: isNavbarSticky 
+                    ? (isPastSection1 
+                      ? 'linear-gradient(77deg, #F6DEC6 -5.32%, #E872D4 48.06%, #C190D9 69.25%, #A2DCFE 94.8%)' 
+                      : 'rgba(0, 0, 0, 0.85)') 
+                    : ''
+                }}
+                role="navigation"
+                aria-label="Main navigation"
+              >
+                <a href="/" aria-label="Home">
+                  <img
+                    loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/e908617ec56f6efe75caa4d66cb809f2a75a0a21d87bf8b4a03989b02bbf7a6c?placeholderIfAbsent=true&apiKey=838345b5408f41af9319f4f5af9e5e4c"
+                    className="object-contain shrink-0 self-stretch my-auto aspect-[3.04] w-[100px] xs:w-[120px] sm:w-[140px]"
+                    alt="Company logo"
+                  />
+                </a>
+                
+                {/* Remove mobile menu button and related components from home.jsx */}
+                
+                {/* Desktop Navigation - Update "Payments" to "FAQ" */}
+                <div className="hidden md:flex flex-row gap-2.5 justify-center items-center w-auto">
+                  <div className="flex flex-row gap-6 items-start self-stretch my-auto text-white pr-6">
+                    <a 
+                      href="#features" 
+                      onClick={(e) => handleScroll(e, 'features')}
+                      className="hover:underline focus:underline focus:outline-2 text-sm"
+                    >
+                      Features
+                    </a>
+                    <a 
+                      href="#how-it-works" 
+                      onClick={(e) => handleScroll(e, 'how-it-works')}
+                      className="hover:underline focus:underline focus:outline-2 text-sm"
+                    >
+                      How it Works
+                    </a>
+                    <a 
+                      href="#faq" 
+                      onClick={(e) => handleScroll(e, 'faq')}
+                      className="hover:underline focus:underline focus:outline-2 text-sm"
+                    >
+                      FAQ
+                    </a>
+                  </div>
+                  <div className="flex flex-row gap-3">
+                    <SignedOut>
+                      <SignInButton>
+                        <button
+                          className="flex gap-1 justify-center items-center py-2.5 px-5 text-white border-white border-solid border-[1px] rounded-[100px] hover:bg-white hover:text-gray-800 focus:outline-2 focus:outline-white transition-colors duration-200 text-xs"
+                          aria-label="Log in to your account"
+                        >
+                          <span className="self-stretch my-auto">Log In</span>
+                        </button>
+                      </SignInButton>
+                      <SignUpButton>
+                        <button
+                          className="flex gap-1 justify-center items-center py-2.5 px-5 bg-white border border-white border-solid shadow-md rounded-[100px] hover:opacity-90 focus:outline-2 focus:outline-white transition-opacity duration-200 text-xs"
+                          aria-label="Sign up for an account"
+                        >
+                          <span className="self-stretch my-auto bg-clip-text bg-[linear-gradient(99deg,#D33DBC_1%,#7A6AE4_51.23%)] text-transparent">
+                            Sign Up
+                          </span>
+                        </button>
+                      </SignUpButton>
+                    </SignedOut>
+                    <SignedIn>
+                      <button
+                        onClick={() => signOut()}
+                        className="flex gap-1 justify-center items-center py-2.5 px-5 text-white border-white border-solid border-[1px] rounded-[100px] hover:bg-white hover:text-gray-800 focus:outline-2 focus:outline-white transition-colors duration-200 text-xs"
+                        aria-label="Log out of your account"
+                      >
+                        <span className="self-stretch my-auto">Log Out</span>
+                      </button>
+                    </SignedIn>
+                  </div>
+                </div>
+              </nav>
+            </div>
+         
+			<Welcome />
+          </div>
+         
+	<Welcome />
+	<Footer/>
+		
+</Layout>
